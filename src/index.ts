@@ -11,16 +11,23 @@ const requestListener = function(req: IncomingMessage, res: ServerResponse){
 
         // Always need to close the res
         res.end();
-    }
-
-    if(req.method === "POST" && req.url === "/products"){
+        return;
+    }else if(req.method === "POST" && req.url === "/products"){
         res.write("create a new product");
         res.end();
-    }
-
-    if(req.method === "DELETE" && req.url === "/users/1"){
+        return;
+    }else if(req.method === "DELETE" && req.url === "/users/1"){
         res.write("delete user by id");
         res.end();
+        
+    }else if(req.method === "PUT" && req.url === "/users/1"){
+        res.write("update user by id");
+        res.end();
+        return;
+    }else if(req.method === "PATCH" && req.url === "/users/1"){
+        res.write("update user partially by id");
+        res.end();
+        return;
     }
 
     // If above if-statement doesn't match then also need to close the response here also a message / status code
